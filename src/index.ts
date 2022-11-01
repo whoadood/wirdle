@@ -55,7 +55,7 @@ function check(guess: string, game: Game, callback: () => void) {
   }
   if (guess === game.answer) {
     console.log(
-      chalk.green(`${chalk.bold("CONGRADULATIONS")} you guessed the wirdle!`)
+      chalk.green(`${chalk.bold("CONGRADULATIONS")} you guessed the squirdle!`)
     );
   } else {
     callback();

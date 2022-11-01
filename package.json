@@ -1,5 +1,5 @@
 {
-  "name": "wirdle",
+  "name": "squirdle",
   "version": "1.0.0",
   "description": "wordle in the command line",
   "main": "dist/index.js",
@@ -14,7 +14,7 @@
   },
   "keywords": [
     "wordle",
-    "wirdle",
+    "squirdle",
     "cli",
     "game"
   ],

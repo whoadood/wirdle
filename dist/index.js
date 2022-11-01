@@ -12,7 +12,6 @@ class Game {
 
 async function wordLogger() {
     const newGame = new Game();
-    console.log(newGame.answer);
     guess(newGame);
 }
 async function guess(game) {
@@ -59,7 +58,7 @@ function check(guess, game, callback) {
         process.exit(0);
     }
     if (guess === game.answer) {
-        console.log(chalk.green(`${chalk.bold("CONGRADULATIONS")} you guessed the birdle!`));
+        console.log(chalk.green(`${chalk.bold("CONGRADULATIONS")} you guessed the squirdle!`));
     }
     else {
         callback();
