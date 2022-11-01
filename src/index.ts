@@ -4,7 +4,6 @@ import inquirer from "inquirer";
 
 export async function wordLogger() {
   const newGame = new Game();
-  console.log(newGame.answer);
   guess(newGame);
 }
 
@@ -56,7 +55,7 @@ function check(guess: string, game: Game, callback: () => void) {
   }
   if (guess === game.answer) {
     console.log(
-      chalk.green(`${chalk.bold("CONGRADULATIONS")} you guessed the birdle!`)
+      chalk.green(`${chalk.bold("CONGRADULATIONS")} you guessed the wirdle!`)
     );
   } else {
     callback();
