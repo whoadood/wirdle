@@ -62,19 +62,19 @@ function check(guess: string, game: Game, callback: () => void) {
 
 async function gameover(msg: string) {
   console.log(msg);
+  process.exit(0);
+  // const answer = await inquirer.prompt({
+  //   type: "confirm",
+  //   name: "again",
+  //   message: "Would you like to play again?",
+  //   validate(input) {
+  //     return true;
+  //   },
+  // });
 
-  const answer = await inquirer.prompt({
-    type: "confirm",
-    name: "again",
-    message: "Would you like to play again?",
-    validate(input) {
-      return true;
-    },
-  });
-
-  if (answer.again) {
-    wordLogger();
-  } else {
-    process.exit(0);
-  }
+  // if (answer.again) {
+  //   wordLogger();
+  // } else {
+  //   process.exit(0);
+  // }
 }
