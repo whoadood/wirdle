@@ -53,11 +53,11 @@ function check(guess, game, callback) {
         .join("");
     console.log(formatGuess);
     if (guess === game.answer) {
-        gameover(chalk.green(`${chalk.bold("CONGRADULATIONS")} you guessed the squirdle!`));
+        return gameover(chalk.green(`${chalk.bold("CONGRADULATIONS")} you guessed the squirdle!`));
     }
     game.round++;
     if (game.round > 6) {
-        gameover(chalk.red(`${chalk.bold(game.answer)} you lose, better luck next time!`));
+        return gameover(chalk.red(`${chalk.bold(game.answer)} you lose, better luck next time!`));
     }
     callback();
 }
@@ -72,7 +72,7 @@ async function gameover(msg) {
         },
     });
     if (answer.again) {
-        wordLogger();
+        guess(new Game());
     }
     else {
         process.exit(0);

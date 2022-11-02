@@ -47,13 +47,13 @@ function check(guess: string, game: Game, callback: () => void) {
     .join("");
   console.log(formatGuess);
   if (guess === game.answer) {
-    gameover(
+    return gameover(
       chalk.green(`${chalk.bold("CONGRADULATIONS")} you guessed the squirdle!`)
     );
   }
   game.round++;
   if (game.round > 6) {
-    gameover(
+    return gameover(
       chalk.red(`${chalk.bold(game.answer)} you lose, better luck next time!`)
     );
   }
@@ -62,19 +62,19 @@ function check(guess: string, game: Game, callback: () => void) {
 
 async function gameover(msg: string) {
   console.log(msg);
-  process.exit(0);
-  // const answer = await inquirer.prompt({
-  //   type: "confirm",
-  //   name: "again",
-  //   message: "Would you like to play again?",
-  //   validate(input) {
-  //     return true;
-  //   },
-  // });
 
-  // if (answer.again) {
-  //   wordLogger();
-  // } else {
-  //   process.exit(0);
-  // }
+  const answer = await inquirer.prompt({
+    type: "confirm",
+    name: "again",
+    message: "Would you like to play again?",
+    validate(input) {
+      return true;
+    },
+  });
+
+  if (answer.again) {
+    guess(new Game());
+  } else {
+    process.exit(0);
+  }
 }
