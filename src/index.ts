@@ -1,9 +1,32 @@
 import { Game } from "./utils/game";
 import chalk from "chalk";
+import figlet from "figlet";
+import gradient from "gradient-string";
 import inquirer from "inquirer";
 
 export async function wordLogger() {
   const newGame = new Game();
+
+  console.log(
+    gradient.pastel.multiline(
+      figlet.textSync("WIRDLE", {
+        font: "3D Diagonal",
+        horizontalLayout: "default",
+        verticalLayout: "default",
+        width: 80,
+        whitespaceBreak: true,
+      })
+    )
+  );
+
+  console.log(
+    chalk.cyan.bold(`
+  - 6 rounds of action
+  - 5 letter words of doom
+  - cntrl + c to exit at any time
+  - can you guess the word?
+  `)
+  );
   guess(newGame);
 }
 
@@ -48,7 +71,7 @@ function check(guess: string, game: Game, callback: () => void) {
   console.log(formatGuess);
   if (guess === game.answer) {
     return gameover(
-      chalk.green(`${chalk.bold("CONGRADULATIONS")} you guessed the squirdle!`)
+      chalk.green(`${chalk.bold("CONGRADULATIONS")} you guessed the wirdle!`)
     );
   }
   game.round++;
