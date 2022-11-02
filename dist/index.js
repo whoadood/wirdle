@@ -31,7 +31,6 @@ async function guess(game) {
         },
     ]);
     game.guesses.push(answers.guess);
-    game.round++;
     check(answers.guess, game, () => guess(game));
 }
 function check(guess, game, callback) {
@@ -53,15 +52,30 @@ function check(guess, game, callback) {
     })
         .join("");
     console.log(formatGuess);
-    if (game.round > 6) {
-        console.log(chalk.red(`${chalk.bold(game.answer)} you lose, better luck next time!`));
-        process.exit(0);
-    }
     if (guess === game.answer) {
-        console.log(chalk.green(`${chalk.bold("CONGRADULATIONS")} you guessed the squirdle!`));
+        gameover(chalk.green(`${chalk.bold("CONGRADULATIONS")} you guessed the squirdle!`));
+    }
+    game.round++;
+    if (game.round > 6) {
+        gameover(chalk.red(`${chalk.bold(game.answer)} you lose, better luck next time!`));
+    }
+    callback();
+}
+async function gameover(msg) {
+    console.log(msg);
+    const answer = await inquirer.prompt({
+        type: "confirm",
+        name: "again",
+        message: "Would you like to play again?",
+        validate(input) {
+            return true;
+        },
+    });
+    if (answer.again) {
+        wordLogger();
     }
     else {
-        callback();
+        process.exit(0);
     }
 }
 
