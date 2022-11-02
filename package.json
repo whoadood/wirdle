@@ -1,6 +1,6 @@
 {
   "name": "squirdle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "wordle in the command line",
   "main": "dist/index.js",
   "type": "module",
