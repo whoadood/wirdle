@@ -18,7 +18,7 @@ async function wordLogger() {
         font: "3D Diagonal",
         horizontalLayout: "default",
         verticalLayout: "default",
-        width: 80,
+        width: 70,
         whitespaceBreak: true,
     })));
     console.log(chalk.cyan.bold(`
