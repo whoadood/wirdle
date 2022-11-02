@@ -67,9 +67,6 @@ async function gameover(msg) {
         type: "confirm",
         name: "again",
         message: "Would you like to play again?",
-        validate(input) {
-            return true;
-        },
     });
     if (answer.again) {
         guess(new Game());
