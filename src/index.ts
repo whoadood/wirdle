@@ -59,15 +59,15 @@ function check(guess: string, game: Game, callback: () => void) {
     .map((letter, index) => {
       if (answerArr.includes(letter)) {
         if (letter === answerArr[index]) {
-          return chalk.green(letter);
+          return chalk.bgGreen(letter);
         } else {
-          return chalk.cyan(letter);
+          return chalk.bgCyan(letter);
         }
       } else {
         return letter;
       }
     })
-    .join("");
+    .join(" ");
   console.log(formatGuess);
   if (guess === game.answer) {
     return gameover(
